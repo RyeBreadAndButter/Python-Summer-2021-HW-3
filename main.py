@@ -20,12 +20,14 @@ def countLetters(stripped_line, letter, letterUpper):
     return lettersDict
 
 
-def readFiles(filename):
+def readFiles(filename, keyword, letter, letterUpper):
     handle = open(filename, 'r')
-    for line in handle:
-        stripped_line = cleanupLine(line)
-        countWords(stripped_line)
-        countLetters(stripped_line)
+    stripped_line = cleanupLine(handle)
+    countWords(stripped_line, keyword)
+    countLetters(stripped_line, letter, letterUpper)
+    return countWords, countLetters
+
+
 
 def results():
     return [0,0,0,0,0,0]
@@ -33,50 +35,36 @@ def results():
 
 
 
-handle1 = open("text1.txt", "r")
-line1 = handle1.read()
-stripped_line1 = cleanupLine(line1)
-wordCount1=countWords(stripped_line1, "to")
-letterCount1=countLetters(stripped_line1, "e", "E")
-#print(stripped_line)
-print(wordsDict)
-print(lettersDict)
+#handle1 = open("text1.txt", "r")
+#line1 = handle1.read()
+#stripped_line1 = cleanupLine(line1)
+#wordCount1=countWords(stripped_line1, "to")
+#letterCount1=countLetters(stripped_line1, "e", "E")
 
 
 
-################################
-handle2 = open("text2.txt", "r")
-line2 = handle2.read()
-stripped_line2 = cleanupLine(line2)
-wordCount2=countWords(stripped_line2, "the")
-letterCount2=countLetters(stripped_line2, "t", "T")
-#print(stripped_line)
-print(wordsDict)
-print(lettersDict)
 
 
-handle3 = open("text3.txt", "r")
-line3 = handle3.read()
-stripped_line3 = cleanupLine(line3)
-wordCount3=countWords(stripped_line3, "computer")
-letterCount3=countLetters(stripped_line3, "w", "W")
-#print(stripped_line)
-print(wordsDict)
-print(lettersDict)
+#handle2 = open("text2.txt", "r")
+#line2 = handle2.read()
+#stripped_line2 = cleanupLine(line2)
+#wordCount2=countWords(stripped_line2, "the")
+#letterCount2=countLetters(stripped_line2, "t", "T")
 
 
-wordsDict = {"to":[wordCount1], "the":[wordCount2], "computer":[wordCount3]}
-lettersDict = {"e":[letterCount1], "t":[letterCount2], "w":[letterCount3]}
+
+#handle3 = open("text3.txt", "r")
+#line3 = handle3.read()
+#stripped_line3 = cleanupLine(line3)
+#wordCount3=countWords(stripped_line3, "computer")
+#letterCount3=countLetters(stripped_line3, "w", "W")
+readFiles("text1.txt", "to", "e", "E")
+readFiles("text2.txt", "the", "t", "T")
+readFiles("text3.txt", "computer", "w", "W")
+
+#wordsDict = {"to":[x], "the":[x], "computer":[x]}
+#lettersDict = {"e":[y], "t":[y], "w":[y]}
 
 print(lettersDict)
 print(wordsDict)
 
-440
-6209
-119
-1566
-0
-0
-
-{'e': [6209], 't': [1566], 'w': [0]}
-{'to': [415], 'the': [164], 'computer': [0]}
